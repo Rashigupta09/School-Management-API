@@ -1,0 +1,69 @@
+{
+  "info": {
+    "name": "School Management APIs",
+    "description": "Postman collection for addSchool and listSchools endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Add School",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Green Valley School\",\n  \"address\": \"12 Lake Road, Jaipur\",\n  \"latitude\": 26.9124,\n  \"longitude\": 75.7873\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "addSchool"
+          ]
+        },
+        "description": "Adds a new school after validating name, address, latitude, and longitude."
+      },
+      "response": []
+    },
+    {
+      "name": "List Schools By Distance",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/listSchools?latitude=26.9124&longitude=75.7873",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "listSchools"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "26.9124"
+            },
+            {
+              "key": "longitude",
+              "value": "75.7873"
+            }
+          ]
+        },
+        "description": "Returns all schools sorted by nearest distance from the provided coordinates."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ]
+}
